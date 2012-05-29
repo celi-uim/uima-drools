@@ -1,0 +1,20 @@
+package it.celi.uima.drool;
+
+import org.uimafit.examples.type.Token;
+import it.celi.uima.type.Classification;
+
+global org.apache.log4j.Logger log
+
+global org.apache.uima.jcas.JCas jCas
+
+rule "simple classifier"
+when
+    $token:Token(coveredText == "good")
+then
+	Classification cl = new Classification(jCas);
+	cl.setBegin($token.getBegin());
+	cl.setEnd($token.getEnd());
+	cl.setLabel("positive");
+	cl.addToIndexes();
+	if(log.isDebugEnabled()) log.debug("token:: " + $token.getCoveredText()); 
+end
