@@ -1,0 +1,4 @@
+*UIMA-Drools*
+
+A UIMA Annotator that uses Drools Rule Engine.
+
